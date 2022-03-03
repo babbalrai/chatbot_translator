@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='remixicon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div id="modal">
+        <p id="thememodal">theme</p>
+    </div>
+    <main>
+        <div id="blueline"></div>
+        <nav>
+            <div id="leftnav">
+                <img src="{{ url_for('static', filename='default--color.svg') }}" alt="">
+            </div>
+            <div id="rightnav">
+                <p>HOME</p>
+                <p>ABOUT</p>
+                <p>BENEFITS</p>
+                <p>AIRDROP</p>
+                <p>ROADMAP</p>
+                <P>FAQ</P>
+                <button>JOIN AIRDROP</button>
+                <button>JOIN TELEGRAM</button>
+            </div>
+        </nav>
+        <button id="theme">THEME</button>
+        <div id="maintext">
+            <h1>WORLD'S FIRST AI SMART CONSTRACT LOWER</h1>
+            <p id="pera">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium asperiores enim est mollitia libero animi debitis atque itaque tenetur fugiat? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis ipsum rerum eos, at suscipit accusamus quasi perspiciatis doloremque voluptates repudiandae!</p>
+            <button id="learnmore">Learn more</button>
+        </div>
+        <img src="{{ url_for('static', filename='134914 (1).png') }}" id="chat" alt="">
+    </main>
+    <!-- <div>
+        <div id = "chatbox">
+        <p class = "botText"><span>Hi! Iam your Chatterbot.</span></p>
+        </div>
+        <div id = "userInput">
+        <input id ="textInput" type ="text" name="msg" placeholder="Message">
+        <input id = "buttonInput" type = "submit" value="Send">
+        </div>
+        </div> -->
+    <div id="fulchat">
+        <div id="chatbax">
+            <div>
+                <div id="navchat ">
+                    <h1>CHATBOX</h1>
+                    <i id="close" class="ri-close-line"></i>
+                </div>
+                <div id = "chatbox">
+                <p class = "botText"><span>Hi! Iam your Chatterbot.</span></p>
+                </div>
+                <!-- <div id = "userInput">
+                <input id ="textInput" type ="text" name="msg" placeholder="Message">
+                <input id = "buttonInput" type = "submit" value="Send">
+                </div> -->
+            
+            <div id="sms"><input id ="textInput" type ="text" name="msg" placeholder="Type something here......"><button id = "buttonInput" type = "submit" value="Send">SENT <i class="ri-send-plane-fill"></i></button></i></div>
+        </div>
+    </div>
+    <script>
+        function getBotResponse(){
+        var rawText = $("#textInput").val();
+        var userHtml = '<p class = "userText"><span>' + rawText + '</span></p>';
+        $("#textInput").val("");
+        $("#chatbox").append(userHtml);
+        document.getElementById('userInput')
+        // .scrollIntoView({block:'start',behaviour:'smooth'});
+        $.get("/get", {msg:rawText }).done(function(data) {
+        var botHtml = '<p class ="botText"><span>' + data + '</span></p>';
+        $("#chatbox").append(botHtml);
+        document.getElementById('userInput')
+        // .scrollIntoView({block : 'start',behaviour:'smooth'});
+        });
+        }
+        // $("#textInput").keypress(function(e) {
+        // if(e.which == 13) {
+        // getBotResponse();
+        // }
+        // });
+        $("#buttonInput").click(function() {
+        getBotResponse();
+        })
+        </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
