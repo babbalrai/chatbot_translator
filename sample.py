@@ -29,13 +29,12 @@ def get_bot_response():
      print(translated_sentence2)
      translated2 = str(english_bot.get_response(translated_sentence2))
      print(translated2)
-     def again_reponse():
-          translated3 = translator.translate(translated2,src="en",code="hi")
-          print(translated3)
-          translated4 = translated3.text
-          print(translated4)
-          return translated4
-     return again_reponse()
+     translated3 = translator.translate(translated2,src="en",code="hi")
+     print(translated3)
+     translated4 = translated3.text
+     print(translated4)
+     return translated4
+     
 
      
 
